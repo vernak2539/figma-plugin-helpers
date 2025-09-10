@@ -2,13 +2,19 @@
   "name": "figma-plugin-helpers",
   "module": "index.ts",
   "type": "module",
+  "types": "dist/index.d.ts",
+  "main": "dist/index.js",
+  "exports": {
+    ".": "./dist/index.js"
+  },
   "scripts": {
-    "build": "bun build ./index.ts --outdir ./dist",
+    "build": "bun ./build.ts",
     "lint": "bunx biome check --write"
   },
   "devDependencies": {
     "@biomejs/biome": "2.2.4",
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "bun-plugin-dts": "^0.3.0"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
