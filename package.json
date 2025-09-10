@@ -3,6 +3,7 @@
   "module": "index.ts",
   "type": "module",
   "scripts": {
+    "build": "bun build ./index.ts --outdir ./dist",
     "lint": "bunx biome check --write"
   },
   "devDependencies": {
