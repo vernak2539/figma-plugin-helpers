@@ -1,3 +1,3 @@
-console.log("Hello via Bun!");
+import figmaMode from "./mode";
 
-export type Test = string;
+export const mode = figmaMode;
