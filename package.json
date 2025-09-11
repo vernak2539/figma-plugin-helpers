@@ -1,5 +1,22 @@
 {
   "name": "figma-plugin-helpers",
+  "version": "0.0.1",
+  "description": "Helpers for Figma plugins",
+  "author": "Alex Vernacchia",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vernak2539/figma-plugin-helpers"
+  },
+  "homepage": "https://github.com/vernak2539/figma-plugin-helpers",
+  "bugs": {
+    "url": "https://github.com/vernak2539/figma-plugin-helpers/issues"
+  },
+  "keywords": [
+    "figma",
+    "plugin",
+    "helpers"
+  ],
   "module": "index.ts",
   "type": "module",
   "types": "dist/index.d.ts",
