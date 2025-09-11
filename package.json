@@ -17,6 +17,10 @@
     "plugin",
     "helpers"
   ],
+  "files": [
+    "dist",
+    "src"
+  ],
   "module": "index.ts",
   "type": "module",
   "types": "dist/index.d.ts",
