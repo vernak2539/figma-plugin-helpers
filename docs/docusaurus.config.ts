@@ -122,16 +122,16 @@ const config: Config = {
 					title: "Community",
 					items: [
 						{
-							label: "Stack Overflow",
-							href: "https://stackoverflow.com/questions/tagged/docusaurus",
+							label: "Me",
+							href: "https://byvernacchia.com",
 						},
 						{
-							label: "Discord",
-							href: "https://discordapp.com/invite/docusaurus",
+							label: "My Ramblings",
+							href: "https://words.byvernacchia.com",
 						},
 						{
-							label: "X",
-							href: "https://x.com/docusaurus",
+							label: "My GitHub",
+							href: "https://github.com/vernak2539",
 						},
 					],
 				},
@@ -139,8 +139,8 @@ const config: Config = {
 					title: "More",
 					items: [
 						{
-							label: "GitHub",
-							href: "https://github.com/facebook/docusaurus",
+							label: "Surprise!",
+							href: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
 						},
 					],
 				},
