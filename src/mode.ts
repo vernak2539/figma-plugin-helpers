@@ -1,27 +1,29 @@
 // File contains functionality relating to the figma plugin mode
 
-const MODES = {
-  DESIGN: "default",
-  DEV: "inspect",
-  CODEGEN: "codegen",
-} as const;
-
-export type Mode = (typeof MODES)[keyof typeof MODES];
-
-const getCurrentMode = (): Mode => {
-  return figma.mode as Mode;
+export const getCurrentMode = (): PluginAPI["mode"] => {
+  return figma.mode;
 };
 
-const isDesignMode = (): boolean => {
-  return getCurrentMode() === MODES.DESIGN;
+export const isDefaultMode = (): boolean => {
+  return getCurrentMode() === "default";
 };
 
-const isDevMode = (): boolean => {
-  return getCurrentMode() === MODES.DEV;
+export const isTextReviewMode = (): boolean => {
+  return getCurrentMode() === "textreview";
 };
 
-const isCodegenMode = (): boolean => {
-  return getCurrentMode() === MODES.CODEGEN;
+export const isInspectMode = (): boolean => {
+  return getCurrentMode() === "inspect";
 };
 
-export default { getCurrentMode, isDesignMode, isDevMode, isCodegenMode };
+export const isCodegenMode = (): boolean => {
+  return getCurrentMode() === "codegen";
+};
+
+export const isLinkPreviewMode = (): boolean => {
+  return getCurrentMode() === "linkpreview";
+};
+
+export const isAuthMode = (): boolean => {
+  return getCurrentMode() === "auth";
+};
