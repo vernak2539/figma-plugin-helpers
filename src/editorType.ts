@@ -1,3 +1,5 @@
+import type PluginAPI from "@figma/plugin-typings";
+
 // File contains functionality relating to the figma plugin mode
 
 export const getCurrentEditorType = (): PluginAPI["editorType"] => {

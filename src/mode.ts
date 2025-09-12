@@ -1,4 +1,5 @@
 // File contains functionality relating to the figma plugin mode
+import type PluginAPI from "@figma/plugin-typings";
 
 export const getCurrentMode = (): PluginAPI["mode"] => {
   return figma.mode;
