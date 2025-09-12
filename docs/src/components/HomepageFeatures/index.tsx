@@ -11,34 +11,28 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
 	{
-		title: "Easy to Use",
+		title: "Make Figma Plugins development easier",
 		Svg: require("@site/static/img/undraw_docusaurus_mountain.svg").default,
 		description: (
 			<>
-				Docusaurus was designed from the ground up to be easily installed and
-				used to get your website up and running quickly.
+				Provides a set of utilities for Figma plugins, making your life easier.
 			</>
 		),
 	},
 	{
-		title: "Focus on What Matters",
+		title: "Made by a dev",
 		Svg: require("@site/static/img/undraw_docusaurus_tree.svg").default,
 		description: (
 			<>
-				Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-				ahead and move your docs into the <code>docs</code> directory.
+				Made by a developer for developers, this library is designed to be easy
+				to use and understand.
 			</>
 		),
 	},
 	{
-		title: "Powered by React",
+		title: "Made with stuff...",
 		Svg: require("@site/static/img/undraw_docusaurus_react.svg").default,
-		description: (
-			<>
-				Extend or customize your website layout by reusing React. Docusaurus can
-				be extended while reusing the same header and footer.
-			</>
-		),
+		description: <>I just have to put something here to make it look nice.</>,
 	},
 ];
 

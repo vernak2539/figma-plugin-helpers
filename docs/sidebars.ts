@@ -13,18 +13,18 @@ import type { SidebarsConfig } from "@docusaurus/plugin-content-docs";
  Create as many sidebars as you want.
  */
 const sidebars: SidebarsConfig = {
-  // By default, Docusaurus generates a sidebar from the docs folder structure
-  apiSidebar: [
-    {
-      type: "category",
-      label: "Documentation",
-      link: {
-        type: "doc",
-        id: "api/index",
-      },
-      items: require("./docs/api/typedoc-sidebar.cjs"),
-    },
-  ],
+	// By default, Docusaurus generates a sidebar from the docs folder structure
+	apiSidebar: [
+		{
+			type: "category",
+			label: "Documentation",
+			link: {
+				type: "doc",
+				id: "api/index",
+			},
+			items: require("./docs/api/typedoc-sidebar.cjs"),
+		},
+	],
 };
 
 export default sidebars;
