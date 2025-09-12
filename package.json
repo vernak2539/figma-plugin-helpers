@@ -31,7 +31,8 @@
   },
   "scripts": {
     "build": "bun ./build.ts",
-    "lint": "bunx biome check --write"
+    "lint": "bunx biome check --write",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@biomejs/biome": "2.2.4",
@@ -39,6 +40,7 @@
     "@happy-dom/global-registrator": "^18.0.1",
     "@types/bun": "latest",
     "bun-plugin-dts": "^0.3.0",
+    "husky": "^9.1.7",
     "semantic-release": "^24.2.8"
   },
   "peerDependencies": {

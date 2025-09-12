@@ -1,4 +1,4 @@
-import { expect, test, describe, beforeEach, afterEach } from "bun:test";
+import { afterEach, beforeEach, describe, expect, test } from "bun:test";
 import { window as global } from "../test/utils/window";
 import * as figmaMode from "./mode";
 
