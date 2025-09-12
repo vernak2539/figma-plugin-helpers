@@ -1,3 +1,2 @@
-import figmaMode from "./mode";
-
-export const mode = figmaMode;
+export * from "./mode";
+export * from "./editorType";
