@@ -1,0 +1,4 @@
+// @ts-check
+/** @type {import("@docusaurus/plugin-content-docs").SidebarsConfig} */
+const typedocSidebar = {items:[{type:"category",label:"Functions",items:[{type:"doc",id:"api/functions/getCurrentEditorType",label:"getCurrentEditorType"},{type:"doc",id:"api/functions/getCurrentMode",label:"getCurrentMode"},{type:"doc",id:"api/functions/isAuthMode",label:"isAuthMode"},{type:"doc",id:"api/functions/isCodegenMode",label:"isCodegenMode"},{type:"doc",id:"api/functions/isDefaultMode",label:"isDefaultMode"},{type:"doc",id:"api/functions/isDevEditor",label:"isDevEditor"},{type:"doc",id:"api/functions/isFigjamEditor",label:"isFigjamEditor"},{type:"doc",id:"api/functions/isFigmaEditor",label:"isFigmaEditor"},{type:"doc",id:"api/functions/isInspectMode",label:"isInspectMode"},{type:"doc",id:"api/functions/isLinkPreviewMode",label:"isLinkPreviewMode"},{type:"doc",id:"api/functions/isTextReviewMode",label:"isTextReviewMode"}]}]};
+module.exports = typedocSidebar.items;
