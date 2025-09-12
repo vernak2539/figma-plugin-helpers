@@ -1,9 +1,9 @@
 {
-  // This file is not used in compilation. It is here just for a nice editor experience.
-  "extends": "@docusaurus/tsconfig",
-  "compilerOptions": {
-    "baseUrl": "."
-  },
-  "exclude": [".docusaurus", "build", "../test/**/*.ts", "../src/**/*.test.ts"],
-  "include": ["../src/**/*.ts"]
+	// This file is not used in compilation. It is here just for a nice editor experience.
+	"extends": "@docusaurus/tsconfig",
+	"compilerOptions": {
+		"baseUrl": "."
+	},
+	"exclude": [".docusaurus", "build", "../test/**/*.ts", "../src/**/*.test.ts"],
+	"include": ["../src/**/*.ts"]
 }
