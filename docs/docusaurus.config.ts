@@ -46,6 +46,8 @@ const config: Config = {
 				pretty: true,
 				gitRevision: "main",
 				parametersFormat: "table",
+				categorizeByGroup: true,
+				readme: "none",
 			},
 		],
 		["docusaurus-plugin-simple-analytics", {}],

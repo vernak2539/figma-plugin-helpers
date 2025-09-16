@@ -2,7 +2,7 @@
 
 > **isAuthMode**(): `boolean`
 
-Defined in: [mode.ts:28](https://github.com/vernak2539/figma-plugin-helpers/blob/main/src/mode.ts#L28)
+Defined in: [mode.ts:49](https://github.com/vernak2539/figma-plugin-helpers/blob/main/src/mode.ts#L49)
 
 ## Returns
 

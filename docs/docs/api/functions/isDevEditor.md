@@ -2,7 +2,7 @@
 
 > **isDevEditor**(): `boolean`
 
-Defined in: [editorType.ts:13](https://github.com/vernak2539/figma-plugin-helpers/blob/main/src/editorType.ts#L13)
+Defined in: [editorType.ts:22](https://github.com/vernak2539/figma-plugin-helpers/blob/main/src/editorType.ts#L22)
 
 ## Returns
 
