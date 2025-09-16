@@ -32,6 +32,7 @@
   "scripts": {
     "build": "bun ./build.ts",
     "lint": "bunx biome check --write",
+    "lint:all": "bun ./scripts/lint-all.ts",
     "prepare": "husky"
   },
   "devDependencies": {
