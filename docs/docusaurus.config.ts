@@ -48,6 +48,7 @@ const config: Config = {
 				parametersFormat: "table",
 			},
 		],
+		["docusaurus-plugin-simple-analytics", {}],
 	],
 
 	presets: [
