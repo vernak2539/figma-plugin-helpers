@@ -24,6 +24,32 @@
 	--docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.05);
 }
 
+/* Hero gradient for light mode */
+.hero.hero--primary {
+	background: linear-gradient(
+		135deg,
+		var(--ifm-color-accent-red) 0%,
+		var(--ifm-color-accent-pink) 25%,
+		var(--ifm-color-primary) 50%,
+		var(--ifm-color-accent-blue) 75%,
+		var(--ifm-color-accent-cyan) 90%,
+		var(--ifm-color-accent-green) 100%
+	);
+	color: white;
+	position: relative;
+}
+
+.hero.hero--primary::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(255, 255, 255, 0.1);
+	pointer-events: none;
+}
+
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme="dark"] {
 	--ifm-color-primary: #b7a6f4; /* Light violet */
@@ -41,4 +67,22 @@
 	--ifm-color-accent-green: #79e6a8;
 
 	--docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.1);
+}
+
+/* Hero gradient for dark mode */
+[data-theme="dark"] .hero.hero--primary {
+	background: linear-gradient(
+		135deg,
+		var(--ifm-color-accent-red) 0%,
+		var(--ifm-color-accent-pink) 25%,
+		var(--ifm-color-primary) 50%,
+		var(--ifm-color-accent-blue) 75%,
+		var(--ifm-color-accent-cyan) 90%,
+		var(--ifm-color-accent-green) 100%
+	);
+	color: white;
+}
+
+[data-theme="dark"] .hero.hero--primary::before {
+	background: rgba(0, 0, 0, 0.2);
 }
