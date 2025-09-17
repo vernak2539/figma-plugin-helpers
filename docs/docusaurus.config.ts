@@ -7,7 +7,7 @@ import { themes as prismThemes } from "prism-react-renderer";
 const config: Config = {
 	title: "Figma Plugin Helpers",
 	tagline: "Helpers for Figma plugins",
-	favicon: "img/favicon.ico",
+	favicon: "img/favicon/favicon.ico",
 
 	// Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
 	future: {
@@ -88,12 +88,12 @@ const config: Config = {
 
 	themeConfig: {
 		// Replace with your project's social card
-		image: "img/docusaurus-social-card.jpg",
+		image: "img/figma-plugin-helpers-logo.png",
 		navbar: {
 			title: "Figma Plugin Helpers",
 			logo: {
 				alt: "Figma Plugin Helpers Logo",
-				src: "img/logo.svg",
+				src: "img/figma-plugin-helpers-logo.png",
 			},
 			items: [
 				{
