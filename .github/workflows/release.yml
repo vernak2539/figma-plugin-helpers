@@ -6,9 +6,110 @@ permissions:
   contents: read # for checkout
 
 jobs:
+  build-and-test:
+    name: Build and Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+      - name: Install dependencies
+        run: bun install
+      - name: Lint
+        run: bun run lint
+      - name: Build
+        run: bun run build
+      - name: Test
+        run: bun test
+
+  dry-run:
+    name: Dry Run
+    runs-on: ubuntu-latest
+    needs: build-and-test
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+      id-token: write
+    outputs:
+      new-release-published: ${{ steps.semantic-release-dry-run.outputs.new-release-published }}
+      new-release-version: ${{ steps.semantic-release-dry-run.outputs.new-release-version }}
+      new-release-notes: ${{ steps.semantic-release-dry-run.outputs.new-release-notes }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+      - name: Install dependencies
+        run: bun install
+      - name: Build
+        run: bun run build
+      - name: Semantic Release Dry Run
+        id: semantic-release-dry-run
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          # Run semantic-release in dry-run mode
+          npx semantic-release --dry-run > dry-run-output.txt 2>&1
+
+          # Check if a new release would be published
+          if grep -q "The next release version is" dry-run-output.txt; then
+            echo "new-release-published=true" >> $GITHUB_OUTPUT
+
+            # Extract version from "The next release version is X.X.X"
+            VERSION=$(grep "The next release version is" dry-run-output.txt | sed 's/.*The next release version is \([0-9]\+\.[0-9]\+\.[0-9]\+\).*/\1/')
+            echo "new-release-version=$VERSION" >> $GITHUB_OUTPUT
+
+            echo "✅ New release would be published: v$VERSION"
+
+            # Save the full output for release notes
+            echo "new-release-notes<<EOF" >> $GITHUB_OUTPUT
+            cat dry-run-output.txt >> $GITHUB_OUTPUT
+            echo "EOF" >> $GITHUB_OUTPUT
+          elif grep -q "There are no relevant changes, so no new version is released" dry-run-output.txt; then
+            echo "new-release-published=false" >> $GITHUB_OUTPUT
+            echo "❌ No new release would be published - no relevant changes found"
+          else
+            echo "new-release-published=false" >> $GITHUB_OUTPUT
+            echo "❌ No new release would be published"
+          fi
+
+          # Always show the full dry-run output for debugging
+          echo "=== Full semantic-release dry-run output ==="
+          cat dry-run-output.txt
+      - name: Upload dry run output as artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: semantic-release-dry-run-output
+          path: dry-run-output.txt
+          retention-days: 7
+
+  approval:
+    name: Approve Release
+    runs-on: ubuntu-latest
+    needs: dry-run
+    if: needs.dry-run.outputs.new-release-published == 'true'
+    environment:
+      name: release-approval
+    steps:
+      - name: Manual Approval Required
+        run: |
+          echo "🎯 Release approval required for version: ${{ needs.dry-run.outputs.new-release-version }}"
+          echo "This step requires manual approval through GitHub's environment protection rules."
+          echo "Once approved, the actual release will proceed."
+
   release:
     name: Release
     runs-on: ubuntu-latest
+    needs: [dry-run, approval]
+    if: needs.dry-run.outputs.new-release-published == 'true'
     permissions:
       contents: write # to be able to publish a GitHub release
       issues: write # to be able to comment on released issues
@@ -32,3 +133,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npx semantic-release
+      - name: Notify Success
+        run: |
+          echo "🚀 Successfully released version: ${{ needs.dry-run.outputs.new-release-version }}"
