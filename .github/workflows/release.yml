@@ -56,7 +56,14 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           # Run semantic-release in dry-run mode
-          npx semantic-release --dry-run > dry-run-output.txt 2>&1
+          if bunx semantic-release --dry-run > dry-run-output.txt 2>&1; then
+            echo "✅ Semantic release dry-run completed successfully"
+          else
+            echo "❌ Semantic release dry-run failed"
+            echo "=== Error output ==="
+            cat dry-run-output.txt
+            exit 1
+          fi
 
           # Check if a new release would be published
           if grep -q "The next release version is" dry-run-output.txt; then
@@ -132,7 +139,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx semantic-release
+        run: bunx semantic-release
       - name: Notify Success
         run: |
           echo "🚀 Successfully released version: ${{ needs.dry-run.outputs.new-release-version }}"
