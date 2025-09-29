@@ -51,6 +51,7 @@ const config: Config = {
 			},
 		],
 		["docusaurus-plugin-simple-analytics", {}],
+		["docusaurus-lunr-search", {}],
 	],
 
 	presets: [
